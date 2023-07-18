@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.victor.entities.Enemy2;
+import com.victor.entities.Enemy1;
 
-class TestEnemy2 {
+class TestEnemy1 {
 
 	@Test
 	void test() {
-		Enemy2 enemy2 = new Enemy2(0, 0, 0, 0, 0, null);
-		assertEquals(false, enemy2.test());
+		Enemy1 enemy1 = new Enemy1(0, 0, 0, 0, 0, null);
+		assertEquals(false, enemy1.test());
 	}
 	
 }

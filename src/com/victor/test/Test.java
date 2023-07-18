@@ -3,13 +3,13 @@ package com.victor.test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.victor.entities.Enemy2;
+import com.victor.entities.Enemy1;
 import com.victor.entities.Entity;
 import com.victor.entities.Player;
 
 class Test {
 	
-	public Enemy2 test = new Enemy2(0, 0, 0, 0, 0, null);
+	public Enemy1 test = new Enemy1(0, 0, 0, 0, 0, null);
 	public Entity test2 = new Entity(0, 0, 0, 0, 0, null);
 	
 	/*

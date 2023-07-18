@@ -23,7 +23,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import com.victor.entities.Enemy1;
-import com.victor.entities.Enemy2;
 import com.victor.entities.Entity;
 import com.victor.entities.Player;
 import com.victor.graficos.Spritesheet;
@@ -45,7 +44,6 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 	public static World world;
 	public static List<Entity> entities;
 	public static List<Enemy1> enemies1;
-	public static List<Enemy2> enemies2;
 	
 	public static Spritesheet spritesheet;
 
@@ -72,7 +70,6 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 		//Instanciando Entities
 		entities = new ArrayList<Entity>();
 		enemies1 = new ArrayList<Enemy1>();
-		enemies2 = new ArrayList<Enemy2>();
 		
 		//INICIALIZANDO OBJETOS
 		world = new World("/level1.png");

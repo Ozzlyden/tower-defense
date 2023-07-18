@@ -6,9 +6,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import com.victor.entities.Enemy1;
-import com.victor.entities.Enemy2;
 import com.victor.entities.Entity;
 import com.victor.entities.Player;
+import com.victor.entities.Spawner;
 import com.victor.main.Game;
 
 public class World {
@@ -32,7 +32,7 @@ public class World {
 					tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16,yy*16,Tile.TILE_FLOOR);
 					
 					/*
-		
+					0xFFFF0000 -> Spawner
 					 */
 					
 					if(pixelAtual == 0xFF000000) {
@@ -40,7 +40,12 @@ public class World {
 					}else if(pixelAtual == 0xFFFFFFFF) {
 						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16,yy*16,Tile.TILE_FLOOR);
 		
+					}else if(pixelAtual == 0xFFFF0000) {
+						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16,yy*16,Tile.TILE_FLOOR);
+						Spawner spawner = new Spawner(xx*16,yy*16, 16, 16, 0, null);
+						Game.entities.add(spawner);
 					}
+					
 				}
 			}
 		} catch (IOException e) {
