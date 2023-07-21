@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import com.victor.entities.Enemy1;
 import com.victor.entities.Entity;
 import com.victor.entities.Player;
+import com.victor.entities.TowerController;
 import com.victor.graficos.Spritesheet;
 import com.victor.graficos.UI;
 import com.victor.world.World;
@@ -50,7 +51,9 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 	public static double life = 10;
 	public static int money = 100;
 	
-	public UI ui;			
+	public UI ui;	
+	
+	public TowerController towerController;
 	
 	public Game() {
 		
@@ -76,6 +79,7 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 		//INICIALIZANDO OBJETOS
 		world = new World("/level1.png");
 		ui = new UI();
+		towerController = new TowerController(0, 0, 0, 0, 0, null);
 		
 	}
 	
@@ -131,6 +135,8 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 			Entity e = entities.get(i);
 			e.tick();
 		}
+		
+		towerController.tick();
 	}
 	
 	
@@ -229,6 +235,9 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		towerController.isPressed = true;
+		towerController.xTarget = e.getX() / 3;
+		towerController.yTarget = e.getY() / 3;
 		
 	}
 
