@@ -46,7 +46,9 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener, 
 	public static List<Enemy1> enemies1;
 	
 	public static Spritesheet spritesheet;
-
+	
+	public static double life = 10;
+	public static int money = 100;
 	
 	public UI ui;			
 	

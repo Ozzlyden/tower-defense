@@ -53,6 +53,7 @@ public class Enemy1 extends Entity{
 		
 		// SISTEMA DE DANO
 		if(x >= Game.WIDTH) {
+			Game.life -= Entity.rand.nextDouble();
 			Game.entities.remove(this);
 			return;
 		}
