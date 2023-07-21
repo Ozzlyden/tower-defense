@@ -17,6 +17,12 @@ public class World {
 	public static int WIDTH,HEIGHT;
 	public static final int TILE_SIZE = 16;
 	
+	// Start e end do A*
+	public static  int xFINAL = 0;
+	public static  int yFINAL = 0;
+	public static int xINITIAL = 0;
+	public static int yINITIAL = 0;
+
 	
 	public World(String path){
 		try {
@@ -33,6 +39,7 @@ public class World {
 					
 					/*
 					0xFFFF0000 -> Spawner
+					0xFF0094FF -> Destino final
 					 */
 					
 					if(pixelAtual == 0xFF000000) {
@@ -44,6 +51,10 @@ public class World {
 						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16,yy*16,Tile.TILE_FLOOR);
 						Spawner spawner = new Spawner(xx*16,yy*16, 16, 16, 0, null);
 						Game.entities.add(spawner);
+					}else if(pixelAtual == 0xFF0094FF) {
+						tiles[xx + (yy * WIDTH)] = new TargetTile(xx*16,yy*16,Tile.TILE_FLOOR);
+						xFINAL = xx;
+						yFINAL = yy;
 					}
 					
 				}

@@ -20,8 +20,8 @@ public class Spawner extends Entity{
 		curTimer++;
 		if(curTimer == timer) {
 			curTimer = 0;
-			timer = Entity.rand.nextInt(60 - 30) + 30 ;
-			Enemy1 enemy1 = new Enemy1(x, y, 16, 16, Entity.rand.nextGaussian() , Entity.ENEMY1);
+			timer = Entity.rand.nextInt(60 - 30) + 30 ;	// rand no time de spawn
+			Enemy1 enemy1 = new Enemy1(x, y, 16, 16, Entity.rand.nextDouble() + Entity.rand.nextInt(2), Entity.ENEMY1);	// rand na speed
 			Game.entities.add(enemy1);
 		}
 	}

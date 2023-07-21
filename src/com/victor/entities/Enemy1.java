@@ -6,7 +6,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.victor.main.Game;
+import com.victor.world.AStar;
 import com.victor.world.Camera;
+import com.victor.world.Vector2i;
 import com.victor.world.World;
 
 public class Enemy1 extends Entity{
@@ -36,7 +38,25 @@ public class Enemy1 extends Entity{
 	}
 
 	public void tick() {
-		x ++;
+		
+		//path = AStar.findPath(Game.world, new Vector2i(World.xINITIAL, World.yINITIAL), new Vector2i(World.xFINAL, World.yFINAL));
+		
+		// ALGORITMO A*
+		
+		if(path == null || path.size() == 0) {
+			Vector2i start = new Vector2i(this.getX()/16, this.getY()/16);	//posicao inicial
+			// Colocamos as posicoes atuais 
+			Vector2i end = new Vector2i(World.xFINAL, World.yFINAL);	//destino final
+			path = AStar.findPath(Game.world, start, end);
+		}
+		followPath(path);
+		
+		// SISTEMA DE DANO
+		if(x >= Game.WIDTH) {
+			Game.entities.remove(this);
+			return;
+		}
+		
 	}
 	
 	public boolean test(){
