@@ -46,7 +46,7 @@ public class TowerController extends Entity{
 			if(liberado) {
 				if(Game.money >= 2) {
 					Game.entities.add(player);
-					Game.money-=2;
+					Game.money-=10;
 				}else {
 					System.out.println("Dinheiro insuficiente");
 				}
@@ -54,7 +54,9 @@ public class TowerController extends Entity{
 			
 		}
 		
-		// VERIFICACAO DE TOWER EM CIMA DOS ENIMIES
+		if(Game.life <= 0) {
+			System.exit(1);	// Game over
+		}
 		
 		
 	}

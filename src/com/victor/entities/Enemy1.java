@@ -17,7 +17,7 @@ public class Enemy1 extends Entity{
 	
 	private int frames = 0, maxFrames = 25, index = 0, maxIndex = 1;
 	
-	public int vida = 1;
+	public double vida = 30;
 	
 	public BufferedImage[] ENEMY2_RIGHT;
 	public BufferedImage[] ENEMY2_LEFT;
@@ -38,6 +38,7 @@ public class Enemy1 extends Entity{
 	}
 
 	public void tick() {
+		//vida-=0.1;
 		
 		//path = AStar.findPath(Game.world, new Vector2i(World.xINITIAL, World.yINITIAL), new Vector2i(World.xFINAL, World.yFINAL));
 		
@@ -58,6 +59,12 @@ public class Enemy1 extends Entity{
 			return;
 		}
 		
+		if(vida <= 0) {
+			Game.entities.remove(this);
+			Game.money+=2;
+		}
+		
+		
 	}
 	
 	public boolean test(){
@@ -77,5 +84,11 @@ public class Enemy1 extends Entity{
 	//g.setColor(Color.BLUE);
 	//g.fillRect(getX() - Camera.x, getY() - Camera.y, width, height);
 	super.render(g);
+	
+	g.setColor(Color.red);
+	g.fillRect((int)x,(int) y - 5, 15, 1);
+	
+	g.setColor(Color.green);
+	g.fillRect((int)x,(int) y - 5,(int)((vida/30) * 15), 1);
 	}
 }
